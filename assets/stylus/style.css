@@ -1,0 +1,313 @@
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+  Mixins available:
+    -   css3-prefix             - arguments: Property, Value
+    -   background-gradient     - arguments: Start Color: #3C3C3C, End Color: #999999
+    -   background-horizontal   - arguments: Start Color: #3C3C3C, End Color: #999999
+    -   background-radial       - arguments: Start Color: #FFFFFF, Start position: 0%, End Color: #000000, End position: 100%
+    -   background-size         - arguments: Width: 100%, Height: 100%
+    -   background-opacity      - arguments: Color: #000, Opacity: .85
+    -   border-radius           - arguments: Radius: 5px
+    -   border-radius-separate  - arguments: Top Left: 5px, Top Right: 5px, Bottom Left: 5px, Bottom Right: 5px
+    -   box                     - arguments: Orientation: horizontal, Pack: center, Align: center
+    -   box-rgba                - arguments: R: 60, G: 3, B: 12, Opacity: 0.23, Color: #3C3C3C
+    -   box-shadow              - arguments: X: 2px, Y: 2px, Blur: 5px, Color: rgba(0,0,0,.4)
+    -   box-sizing              - arguments: Type: border-box
+    -   columns                 - arguments: Count: 3, Gap: 10
+    -   double-borders          - arguments: Color One: #3C3C3C, Color Two: #999999, Radius: 0
+    -   flex                    - arguments: Value: 1
+    -   flip                    - arguments: ScaleX: -1
+    -   font-face               - arguments: Font Family: myFont, Eot File Src: myFont.eot, Woff File Src: myFont.woff, Ttf File Src: myFont.ttf
+    -   opacity                 - arguments: Opacity: 0.5
+    -   outline radius          - arguments: Radius: 5px
+    -   resize                  - arguments: Direction: both
+    -   rotate                  - arguments: Degree: 0, M11: 0, M12: 0, M21: 0, M22: 0
+    CSS Matrix Rotation Calculator http://www.boogdesign.com/examples/transforms/matrix-calculator.html
+    -   text-shadow             - arguments: X: 2px, Y: 2px, Blur: 5px, Color: rgba(0,0,0,.4)
+    -   transform               - arguments: Parameters: null
+    -   transform-style         - arguments: Style: preserve-3d
+    -   transition              - Default arguments: What: all, Length: 1s, Easing: ease-in-out
+    -                            - Examples: @include transition (all 2s ease-in-out);
+    -                                        @include transition (opacity 1s ease-in 2s, width 2s ease-out);
+    -   triple-borders          - arguments: Color One: #3C3C3C, Color Two: #999999, Color Three: #000000, Radius: 0
+    -   keyframes               - arguments: Animation name
+                                - content:   Animation css
+    -   animation               - arguments: name duration timing-function delay iteration-count direction fill-mode play-state
+                                             (http://www.w3schools.com/cssref/css3_pr_animation.asp)
+
+------------------------------------------------------------- */
+@font-face {
+  font-family: "OpenSansRegular";
+  src: url("../fonts/OpenSansRegular/OpenSansRegular.eot");
+  src: local("?"), url("../fonts/OpenSansRegular/OpenSansRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSansRegular/OpenSansRegular.woff") format("woff"), url("../fonts/OpenSansRegular/OpenSansRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: "PTSansRegular";
+  src: url("../fonts/PTSansRegular/PTSansRegular.eot");
+  src: local("?"), url("../fonts/PTSansRegular/PTSansRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/PTSansRegular/PTSansRegular.woff") format("woff"), url("../fonts/PTSansRegular/PTSansRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+/* fonts-family: "RobotoRegular"; */
+@font-face {
+  font-family: "RobotoRegular";
+  src: url("../fonts/RobotoRegular/RobotoRegular.eot");
+  src: local("?"), url("../fonts/RobotoRegular/RobotoRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoRegular/RobotoRegular.woff") format("woff"), url("../fonts/RobotoRegular/RobotoRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+/* fonts-family: "RobotoLight"; */
+@font-face {
+  font-family: "RobotoLight";
+  src: url("../fonts/RobotoLight/RobotoLight.eot");
+  src: local("?"), url("../fonts/RobotoLight/RobotoLight.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoLight/RobotoLight.woff") format("woff"), url("../fonts/RobotoLight/RobotoLight.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+/* fonts-family: "RobotoMedium"; */
+@font-face {
+  font-family: "RobotoMedium";
+  src: url("../fonts/RobotoMedium/RobotoMedium.eot");
+  src: local("?"), url("../fonts/RobotoMedium/RobotoMedium.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoMedium/RobotoMedium.woff") format("woff"), url("../fonts/RobotoMedium/RobotoMedium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+/* fonts-family: "RobotoBold"; */
+@font-face {
+  font-family: "RobotoBold";
+  src: url("../fonts/RobotoBold/RobotoBold.eot");
+  src: local("?"), url("../fonts/RobotoBold/RobotoBold.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoBold/RobotoBold.woff") format("woff"), url("../fonts/RobotoBold/RobotoBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+/* fonts-family: "NautilusPompiliusRegular"; */
+@font-face {
+  font-family: "NautilusPompiliusRegular";
+  src: url("../fonts/NautilusPompiliusRegular/NautilusPompiliusRegular.eot");
+  src: local("?"), url("../fonts/NautilusPompiliusRegular/NautilusPompiliusRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/NautilusPompiliusRegular/NautilusPompiliusRegular.woff") format("woff"), url("../fonts/NautilusPompiliusRegular/NautilusPompiliusRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+/* fonts-family: "RobotoCondensedRegular"; */
+@font-face {
+  font-family: "RobotoCondensedRegular";
+  src: url("../fonts/RobotoCondensedRegular/RobotoCondensedRegular.eot");
+  src: local("?"), url("../fonts/RobotoCondensedRegular/RobotoCondensedRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensedRegular/RobotoCondensedRegular.woff") format("woff"), url("../fonts/RobotoCondensedRegular/RobotoCondensedRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+/* fonts-family: "RobotoCondensedLight"; */
+@font-face {
+  font-family: "RobotoCondensedLight";
+  src: url("../fonts/RobotoCondensedLight/RobotoCondensedLight.eot");
+  src: local("?"), url("../fonts/RobotoCondensedLight/RobotoCondensedLight.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensedLight/RobotoCondensedLight.woff") format("woff"), url("../fonts/RobotoCondensedLight/RobotoCondensedLight.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+/* fonts-family: "RobotoCondensedBold"; */
+@font-face {
+  font-family: "RobotoCondensedBold";
+  src: url("../fonts/RobotoCondensedBold/RobotoCondensedBold.eot");
+  src: local("?"), url("../fonts/RobotoCondensedBold/RobotoCondensedBold.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensedBold/RobotoCondensedBold.woff") format("woff"), url("../fonts/RobotoCondensedBold/RobotoCondensedBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+
+/* fonts-family: "Material Icon"; */
+/*@font-face {
+    fonts-family: 'Material Icon';
+    fonts-style: normal;
+    fonts-weight: 400;
+    src: local('Material Icon'),local('MaterialIcons-Regular'),
+        url('../fonts/material-design-icons/Material-Design-Icons.woff2') format('woff2');
+}*/
+body {
+  margin: 0 auto;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.333em;
+  font-family: "PTSansRegular", serif; }
+
+h1, h2, h3, h4, h5 {
+  line-height: 1;
+  margin: 0 auto;
+  font-weight: inherit; }
+
+p {
+  margin: 5px auto;
+  padding: 10px 5px;
+  text-shadow: 0 1px 0 #eee;
+  font-size: 1.1em; }
+  @media (min-width: 20em) and (max-width: 60em) {
+    p {
+      font-size: calc( 1.1em + 0.23 * ( ( 100vw - 20em) / 40 ) ); } }
+  @media (min-width: 60em) {
+    p {
+      font-size: 1.33em; } }
+
+h1 {
+  font-size: 1.4641em; }
+  @media (min-width: 20em) and (max-width: 60em) {
+    h1 {
+      font-size: calc( 1.4641em + 1.66491 * ( ( 100vw - 20em) / 40 ) ); } }
+  @media (min-width: 60em) {
+    h1 {
+      font-size: 3.12901em; } }
+
+h2 {
+  font-size: 1.331em; }
+  @media (min-width: 20em) and (max-width: 60em) {
+    h2 {
+      font-size: calc( 1.331em + 1.02164 * ( ( 100vw - 20em) / 40 ) ); } }
+  @media (min-width: 60em) {
+    h2 {
+      font-size: 2.35264em; } }
+
+h3 {
+  font-size: 1.21em; }
+  @media (min-width: 20em) and (max-width: 60em) {
+    h3 {
+      font-size: calc( 1.21em + 0.5589 * ( ( 100vw - 20em) / 40 ) ); } }
+  @media (min-width: 60em) {
+    h3 {
+      font-size: 1.7689em; } }
+
+h4 {
+  font-size: 1.1em; }
+  @media (min-width: 20em) and (max-width: 60em) {
+    h4 {
+      font-size: calc( 1.1em + 0.23 * ( ( 100vw - 20em) / 40 ) ); } }
+  @media (min-width: 60em) {
+    h4 {
+      font-size: 1.33em; } }
+
+h5 {
+  font-size: 1em; }
+  @media (min-width: 20em) and (max-width: 60em) {
+    h5 {
+      font-size: calc( 1em + 0 * ( ( 100vw - 20em) / 40 ) ); } }
+  @media (min-width: 60em) {
+    h5 {
+      font-size: 1em; } }
+
+@media only screen and (max-width: 768px) {
+  .animated {
+    -o-transition-property: none !important;
+    -moz-transition-property: none !important;
+    -ms-transition-property: none !important;
+    -webkit-transition-property: none !important;
+    transition-property: none !important;
+    -o-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    -webkit-animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    -ms-animation: none !important;
+    animation: none !important; } }
+
+body {
+  background-color: #fff; }
+
+.bbox {
+  margin: 0 auto;
+  width: 500px;
+  height: 100px;
+  background-color: #c4d9c3;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 6px 5px 20px #ddd;
+  -khtml-box-shadow: 6px 5px 20px #ddd;
+  -moz-box-shadow: 6px 5px 20px #ddd;
+  -ms-box-shadow: 6px 5px 20px #ddd;
+  -o-box-shadow: 6px 5px 20px #ddd;
+  box-shadow: 6px 5px 20px #ddd; }
+
+/*.navgor ul { 
+    list-style-type: none; 
+    margin: 0px;
+    padding:0px;
+}
+
+.navgor li {
+    display: inline; 
+
+  padding:15px;
+}
+
+//end navbar
+
+.left{
+float:left;
+}
+
+.right{
+float:right;
+}*/
+/* //header, .header {
+  // height: 100%;
+   //background: url("..//images/cover.jpg") center center;
+   //@include  background-size (cover);
+//}
+
+ .patern{
+    background-color: rgba(44, 62, 80, 0.3);
+    background-image: url("../images/pattern.png");
+    background-repeat: repeat;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+.intro {
+  color:#fff;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  text-align: center;
+  -webkit-transform: translate(0%, -50%);
+     -moz-transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%);
+     -o-transform: translate(0%, -50%);
+      transform: translate(0%, -50%);
+  padding: 0 15px;
+  h1{
+    font-weight: 800;
+  }
+}
+
+.start {
+  font-weight: 600;
+  font-size: 16px;
+  font-style: normal;
+  text-transform: none;
+  margin: 15px 0;
+}*/
+p::selection {
+  background: #F05332;
+  color: white;
+  text-shadow: none; }
+
+.sect1 {
+  height: 100vh;
+  background-color: #fff; }

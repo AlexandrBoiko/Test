@@ -1,0 +1,43 @@
+
+
+
+//button
+@mixin btna {
+	display: inline-block;
+	margin: 100px 0;
+	text-decoration: none;
+	font-size: 18px;
+	color: white;
+	padding: 1em 2em;
+	letter-spacing: 0.1em;
+	border-radius: 3px;
+	@include transition(all 300ms);
+	background: $olive;
+}
+
+////////////
+
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+//////
+
+@mixin header($h,$w) {
+	position: relative;
+	height: $h;
+	width: $w;
+	background: url(../images/trike.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+

@@ -1,0 +1,40 @@
+
+@import "modularscale/modular-scale";
+// @import "modular-scale-tests";
+$ms-base: 1em;
+$ms-ratio: 1.333;
+
+$ms-range:
+
+  1.1  20em,
+  1.33 60em;
+// $ms-fluid: false;
+
+body {
+  margin: 0 auto;
+  font-weight: 400;
+  color: #333;
+  line-height: ms(1);
+  font-family: "PTSansRegular", serif;
+}
+
+h1, h2, h3, h4, h5, {
+  line-height: 1;
+  margin: 0 auto;
+  font-weight: inherit; 
+}
+
+p{
+  //font-size:1.7em; 
+  margin: 5px auto; 
+  padding: 10px 5px;
+  text-shadow: 0 1px 0 #eee; 
+  //font-size: ms(1, 9px, $gold);
+  @include ms-respond(font-size, 1); 
+}
+
+@for $i from 1 through 5 {
+  h#{$i} {
+    @include ms-respond(font-size,($i - 5) * -1)
+  }
+}

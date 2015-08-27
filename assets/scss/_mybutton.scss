@@ -1,0 +1,34 @@
+@charset "UTF-8";
+/* myButton
+*******************************************************************************/
+@mixin myButton {
+  @include background-image(linear-gradient($startColor, $endColor2));
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #bbb;
+  @include border-radius(3px);
+  color: #333;
+  font: bold 15px "PTSansRegular","RobotoRegular","Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  line-height: 2;
+  padding: 8px 0;
+  text-align: center;
+  text-shadow: 1px 1px 0 #fff;
+  width: 150px;
+@include transition(all 300ms);
+&:hover {
+  @include background-image(linear-gradient($endColor2, $startColor));
+  @include box-shadow($green 0 0 15px, rgba($green, 0.9) 0 0 15px 1px );
+  border: 1px solid #bbb;
+  border-bottom: 1px solid #999;
+  cursor: pointer;
+  text-shadow: 1px 1px 0 #fff;
+}
+&:active {
+  border: 1px solid #aaa;
+  border-bottom: 1px solid #888;
+  @include box-shadow($green 0 0 1px, rgba($green, 0.9) 0 0 1px 1px );
+  @include simple-transform (1, 0deg, 3px, 3px, 0, 0, 0, 0);
+}
+}
+  button.myButton {
+  @include myButton;
+}
