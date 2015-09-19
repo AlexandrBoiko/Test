@@ -9,8 +9,11 @@ var webserver = require('gulp-webserver');
 var sass = require('gulp-sass');
 var uncss = require('gulp-uncss');
 var strip = require('gulp-strip-css-comments');
+var browserSync = require('browser-sync');
 
-gulp.task('default', ['sass','cssConcat','imageMin','webserver','jsUglify','watch']);
+
+gulp.task('default', ['browserSync','sass','cssConcat','imageMin','jsUglify','watch']);
+// gulp.task('default', ['sass','cssConcat','imageMin','webserver','jsUglify','watch']);
 
 gulp.task('sass', function () {
      gulp.src('./assets/scss/**/*.scss')
@@ -19,32 +22,44 @@ gulp.task('sass', function () {
 });
 
 gulp.task('cssConcat', function() {
-	 gulp.src('./assets/stylus/*.css')	
+	 gulp.src('./assets/stylus/**/*.css')	
 	.pipe(autoprefixer())
 	.pipe(uncss({
 		html: ['./build/index.html', 'posts/**/*.html']
 	}))	
 	.pipe(concat('main.css'))
-	.pipe(cssmin())  
-	.pipe(strip(false))	
-	.pipe(gulp.dest('./build/css/'));  
-});
-
+.pipe(strip({
+	all: true,
+    force: true,
+    line: true,
+    block: true,
+   }))
+	.pipe(cssmin())  	
+	.pipe(gulp.dest('./build/css/'));
+    });
 
 gulp.task('jsUglify', function() {
      gulp.src (['./assets/js/*.js'])    
     .pipe(uglify())
-    .pipe(concat('main.js'))
+    .pipe(concat('main.js'))    
     .pipe(gulp.dest('./build/js'));
 });
 
-gulp.task('webserver', function() {
-	 gulp.src('.')	
-	 .pipe(webserver({
-	  livereload: true,
-      directoryListing: true,
-      open: true
-	 }))	
+// gulp.task('webserver', function() {
+// 	 gulp.src('.')	
+// 	 .pipe(webserver({
+// 	  livereload: true,
+//       directoryListing: true,
+//       open: true
+// 	 }))	
+// });
+
+gulp.task('browserSync', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./build/"
+        }
+    });
 });
 
 gulp.task('imageMin', function() {
@@ -67,6 +82,11 @@ gulp.task('watch', function () {
 	 gulp.watch('./assets/js/*.js', ['jsUglify']);
 	 gulp.watch('./assets/scss/**/*.*', ['sass']);	
 	 gulp.watch('./build/css/main.css', ['cssmin']);	
+  	 gulp.watch('./build/index.html') .on('change', browserSync.reload);
+	 gulp.watch('./build/css/main.css') .on('change', browserSync.reload);
+ 	 gulp.watch('./build/js/main.js') .on('change', browserSync.reload);
+ 	 gulp.watch('./build/img/**/*.*') .on('change', browserSync.reload);
+
 	
 });
 

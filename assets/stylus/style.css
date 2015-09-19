@@ -137,7 +137,7 @@ body {
   font-weight: 400;
   color: #333;
   line-height: 1.333em;
-  font-family: "PTSansRegular", serif; }
+  font-family: "RobotoBold", serif; }
 
 h1, h2, h3, h4, h5 {
   line-height: 1;
@@ -147,7 +147,6 @@ h1, h2, h3, h4, h5 {
 p {
   margin: 5px auto;
   padding: 10px 5px;
-  text-shadow: 0 1px 0 #eee;
   font-size: 1.1em; }
   @media (min-width: 20em) and (max-width: 60em) {
     p {
@@ -219,26 +218,21 @@ h5 {
     -ms-animation: none !important;
     animation: none !important; } }
 
-body {
-  background-color: #fff; }
+* {
+  transition: all 0.5s; }
 
-.bbox {
-  margin: 0 auto;
-  width: 500px;
-  height: 100px;
-  background-color: #c4d9c3;
-  -webkit-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: 6px 5px 20px #ddd;
-  -khtml-box-shadow: 6px 5px 20px #ddd;
-  -moz-box-shadow: 6px 5px 20px #ddd;
-  -ms-box-shadow: 6px 5px 20px #ddd;
-  -o-box-shadow: 6px 5px 20px #ddd;
-  box-shadow: 6px 5px 20px #ddd; }
+body {
+  font-family: "PTSansRegular", serif;
+  background-color: #ccc;
+  text-shadow: 0 1px 0 #eee; }
+
+p::selection {
+  background: #F05332;
+  color: white;
+  text-shadow: none; }
+
+h1 {
+  text-align: center; }
 
 /*.navgor ul { 
     list-style-type: none; 
@@ -303,11 +297,6 @@ float:right;
   text-transform: none;
   margin: 15px 0;
 }*/
-p::selection {
-  background: #F05332;
-  color: white;
-  text-shadow: none; }
-
 .sect1 {
   height: 100vh;
   background-color: #fff; }

@@ -21,19 +21,48 @@
 @import '_typography';      
 @import '_media';           
 
+
+*{
+  transition: all .5s;
+}
+
 body{
-  background-color: #fff;     
+
+    font-family: "PTSansRegular", serif;  
+    background-color: #ccc;  
+    text-shadow: 0 1px 0 #eee;    
+}
+
+p::selection{
+  background: #F05332;
+  color: white;
+  text-shadow: none;
+}
+h1{
+text-align: center;
 }
 
 
-.bbox{ 
-   margin: 0 auto; 
-   width: 500px;
-   height: 100px;
-   background-color: #c4d9c3;
-   @include border-radius($radius: 10px);
-   @include box-shadow(6px, 5px, 20px, #ddd);   
-}
+
+
+
+
+
+
+
+
+
+
+
+
+// .box{ 
+//    margin: 0 auto; 
+//    width: 500px;
+//    height: 100px;
+//    background-color: #fff;
+//    @include border-radius($radius: 5px);
+//    @include box-shadow(6px, 5px, 20px, #ddd);   
+// }
 
 //navbar
 
@@ -103,11 +132,7 @@ float:right;
   margin: 15px 0;
 }*/
 
-p::selection{
-  background: #F05332;
-  color: white;
-  text-shadow: none;
-}
+
 
 // .parallax-container {
 //   height: 100vh;
